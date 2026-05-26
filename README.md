@@ -37,3 +37,13 @@ The changes usually take effect immediately, but if the shortcuts are still work
 2. Type `gpupdate /force` and press **Enter**.
 
 If you ever want to re-enable the Windows key shortcuts in the future, simply repeat these steps and change the setting back to **Not Configured** or **Disabled**.
+
+
+
+# 2 - Get latest applications.json from the community
+
+Run the sync script from the repo root to pull the latest `applications.json` from the community repo and refresh both this repo's copy and the active file at `$Env:USERPROFILE\applications.json`:
+
+```powershell
+.\scripts\sync-applications-json.ps1
+```
