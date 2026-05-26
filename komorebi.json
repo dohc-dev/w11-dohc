@@ -3,10 +3,16 @@
   "app_specific_configuration_path": "$Env:USERPROFILE/applications.json",
   "window_hiding_behaviour": "Cloak",
   "cross_monitor_move_behaviour": "Insert",
-  "default_workspace_padding": 20,
-  "default_container_padding": 20,
+  "global_work_area_offset": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": -35
+  },
+  "default_workspace_padding": 1,
+  "default_container_padding": 1,
   "border": true,
-  "border_width": 8,
+  "border_width": 6,
   "border_offset": -1,
   "theme": {
     "palette": "Base16",
@@ -23,27 +29,27 @@
         },
         {
           "name": "II",
-          "layout": "VerticalStack"
+          "layout": "BSP"
         },
         {
           "name": "III",
-          "layout": "HorizontalStack"
+          "layout": "BSP"
         },
         {
           "name": "IV",
-          "layout": "UltrawideVerticalStack"
+          "layout": "BSP"
         },
         {
           "name": "V",
-          "layout": "Rows"
+          "layout": "BSP"
         },
         {
           "name": "VI",
-          "layout": "Grid"
+          "layout": "BSP"
         },
         {
           "name": "VII",
-          "layout": "RightMainVerticalStack"
+          "layout": "BSP"
         }
       ]
     }

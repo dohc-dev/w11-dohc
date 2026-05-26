@@ -38,7 +38,43 @@ The changes usually take effect immediately, but if the shortcuts are still work
 
 If you ever want to re-enable the Windows key shortcuts in the future, simply repeat these steps and change the setting back to **Not Configured** or **Disabled**.
 
+---
 
+### Complete Removal: Disable the Physical Windows Key
+
+The Group Policy method above doesn't disable a bare Windows key tap (which still opens Start). For complete removal, use the registry-based Scancode Map:
+
+**To disable:**
+1. Right-click Start, select **Terminal** or **Command Prompt** and choose **Run as administrator**
+2. Paste and run:
+   ```
+   reg add "HKLM\SYSTEM\CurrentControlSet\Control\Keyboard Layout" /v "Scancode Map" /t REG_BINARY /d 00000000000000000300000000005BE000005CE000000000 /f
+   ```
+3. Restart your PC
+
+**To undo:**
+```
+reg delete "HKLM\SYSTEM\CurrentControlSet\Control\Keyboard Layout" /v "Scancode Map" /f
+```
+
+This completely disables both Windows keys with zero performance overhead. You can still open Start by clicking the taskbar icon.
+
+### Disable Win + L (Lock Workstation)
+
+**To disable:**
+1. Right-click Start, select **Terminal** or **Command Prompt** and choose **Run as administrator**
+2. Paste and run:
+   ```
+   reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System" /v DisableLockWorkstation /t REG_DWORD /d 1 /f
+   ```
+3. Restart your PC
+
+**To undo:**
+```
+reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System" /v DisableLockWorkstation /f
+```
+
+---
 
 # 2 - Get latest applications.json from the community
 
@@ -47,3 +83,20 @@ Run the sync script from the repo root to pull the latest `applications.json` fr
 ```powershell
 .\scripts\sync-applications-json.ps1
 ```
+
+# 3 - Windhawk + RoundedTB
+
+[Windhawk](https://windhawk.net/) is a customization tool for Windows, paired with [RoundedTB Community Edition](https://github.com/PeterMaZep/RoundedTB-Community-edition) for advanced taskbar styling.
+
+### Windhawk Mods
+
+- **Taskbar Fade** — Automatically dims or hides the taskbar when idle. Reduces visual clutter and prevents OLED burn-in.
+- **Taskbar height and icon size** — Control taskbar height and icon size with improved icon quality (Windows 11 only).
+- **Taskbar Z-Order Override** — Control whether the taskbar stays always on top, always at the bottom, or behaves like a normal window.
+- **Windows 11 Notification Center Styler** — Customize the Notification Center and Action Center with community themes or create your own.
+- **Windows 11 Start Menu Styler** — Customize the Start menu with community themes or create your own.
+- **Windows 11 Taskbar Styler** — Customize the taskbar with community themes or create your own.
+
+### RoundedTB Community Edition
+
+Install [RoundedTB Community Edition](https://github.com/PeterMaZep/RoundedTB-Community-edition) for additional taskbar customization options that work alongside Windhawk.
